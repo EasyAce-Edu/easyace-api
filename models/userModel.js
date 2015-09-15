@@ -22,10 +22,12 @@ var userSchema = new Schema({
       loc: String
     }
   ],
-  device: {
-    os: String,
-    id: String
-  }
+  device: [
+    {
+      os: String,
+      id: String
+    }
+  ]
 });
 
 module.exports = mongoose.model('Users', userSchema);

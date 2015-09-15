@@ -1,7 +1,7 @@
 {
   "name": "easyace-api",
   "description": "EasyAce Restful API System",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Josh P. Cheng",
   "private": true,
   "main": "app.js",
@@ -19,8 +19,14 @@
     "mongodb"
   ],
   "apidoc": {
-    "title": "API docs for EasyAce Restful API System"
+    "title": "EasyAce Restful API System Docs"
   },
   "dependencies": {
+    "body-parser": "^1.13.3",
+    "compression": "^1.5.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.7",
+    "morgan": "^1.6.1"
   }
 }
