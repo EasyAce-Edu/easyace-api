@@ -5,7 +5,7 @@ module.exports = function(app){
   var cors       = require('cors');
   var logger     = require('morgan');
 
-  if(config.db.client === 'MONGODB') {
+  if(config.db.client === 'mongodb') {
     var mongoose   = require('mongoose');
     mongoose.connect(config.db.url, function(err, response){
       if (err) {

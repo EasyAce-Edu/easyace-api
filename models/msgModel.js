@@ -5,7 +5,7 @@ var msgSchema = new Schema({
   createdAt: Date,
   from: String,
   to: String,
-  body: {
+  content: {
     audio: [String],
     image: [String],
     text: String
