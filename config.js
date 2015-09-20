@@ -1,4 +1,5 @@
 module.exports = {
+  version: 'v1',
   db: {
     client: 'mongodb',
     url: process.env.DB_URL || 'mongodb://localhost:27017/easyace-api'

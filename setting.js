@@ -26,5 +26,6 @@ module.exports = function(app){
   app.use(cors());
 
   app.enable('trust proxy');
+  app.disable('x-powered-by');
   app.disable('etag');
 };

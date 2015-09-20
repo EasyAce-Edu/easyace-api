@@ -8,7 +8,7 @@ var msgSchema = new Schema({
   content: {
     audio: [String],
     image: [String],
-    text: String
+    text: [String]
   }
 });
 

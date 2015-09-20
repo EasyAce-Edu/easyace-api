@@ -1,7 +1,7 @@
 var Message = require('../models/msgModel');
+var respond = require('../lib/utils').respond;
 
 exports.create = function(req, res){
-  console.dir(req.body);
   var message = new Message({
     createdAt: new Date(),
     from: req.body.from,
@@ -15,39 +15,35 @@ exports.create = function(req, res){
   message.save(function(err){
     if (err) {
       console.error(err.stack);
-      return res.status(400).json({
-        data: {
-          msg: 'Unable to create a new message.'
-        }
+      return respond(req, res, 500, {
+        msg: 'DB Internal Error occurs --> Unable to create the message as requested.'
       });
     }
-    return res.status(200).json({
-      status: {
-        code: 0,
-        msg: 'Success'
-      },
-      data: {
-        msg: 'Message has been successfully created.'
-      }
+    return respond(req, res, 200, {
+      msg: 'Message has been successfully created and saved into the database.'
     });
   });
 };
 
 exports.get = function(req, res) {
+  var query = {};
+
   Message
-    .find({})
+    .find(query)
+    .select('-__v')
+    .lean()
     .exec(function(err, messages){
       if (err) {
         console.error(err.stack);
-        return res.status(400).end();
+        return respond(req, res, 500, {
+          msg: 'DB Internal Error occurs --> Unable to retrieve the message as requested.'
+        });
       }
       if (!messages || messages.length === 0) {
-        return res.status(200).end();
+        return respond(req, res, 200);
       }
-      return res.status(200).json({
-        data: {
-          messages: messages
-        }
+      return respond(req, res, 200, {
+        messages: messages
       });
     });
 };

@@ -6,6 +6,7 @@ var app     = express();
 
 // http server global configuration
 var http    = require('http');
+var respond = require('./lib/utils').respond;
 
 // Load local Express JS configuration
 require('./setting')(app);
@@ -22,15 +23,9 @@ fs.readdirSync(__dirname + '/routes')
     }
   });
 
-app.use('/system', function(req, res) {
-  return res.status(200).json({
-    status: {
-      code: 0,
-      msg: 'Success'
-    },
-    data: {
-      text: 'System operates normally.'
-    }
+app.get('/', function(req, res) {
+  return respond(req, res, 200, {
+    msg: 'API Server is running normally.'
   });
 });
 
