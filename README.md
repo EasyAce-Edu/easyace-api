@@ -15,4 +15,4 @@
 - [ ] HTTP POST api to store a student's question
 
 # Demo
-- Heroku: 
+- Heroku: https://easyace-api.herokuapp.com
