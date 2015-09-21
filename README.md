@@ -6,13 +6,17 @@
 
 # Run Locally
 ```javascript
-  node app.js
+  node app.js or nodemon app.js
 ```
 
 # To-dos
 - [ ] JSON web token based login api using PassportJS ? or self-developed module?
-- [ ] question mongoose model
-- [ ] HTTP POST api to store a student's question
+- [x] Message mongoose model
+- [x] HTTP POST api to store a student's question
 
-# Demo
-- Heroku: https://easyace-api.herokuapp.com
+# Server
+
+| Type | URL |
+|------|-----|
+|  Staging | https://easyace-api-staging.herokuapp.com |
+| Production | https://easyace-api.herokuapp.com |
