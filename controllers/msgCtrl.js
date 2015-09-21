@@ -1,4 +1,4 @@
-var Message = require('../models/msgModel');
+var Message = require('../models/message');
 var respond = require('../lib/utils').respond;
 
 exports.create = function(req, res){
@@ -16,7 +16,7 @@ exports.create = function(req, res){
     if (err) {
       console.error(err.stack);
       return respond(req, res, 500, {
-        msg: 'DB Internal Error occurs --> Unable to create the message as requested.'
+        msg: err.message
       });
     }
     return respond(req, res, 200, {

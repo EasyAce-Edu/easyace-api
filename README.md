@@ -1,7 +1,7 @@
 # Structure
 - Environment: NodeJS v0.12.x
 - Framework: ExpressJS + Socket.IO?
-- DB: MongoDB v3.0.x
+- DB: MongoDB v3.x.x
 - Linter: JSHint --> ESLint
 
 # Run Locally

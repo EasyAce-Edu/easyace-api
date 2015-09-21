@@ -6,7 +6,7 @@ module.exports = function(app){
   var logger     = require('morgan');
 
   if(config.db.client === 'mongodb') {
-    var mongoose   = require('mongoose');
+    var mongoose = require('mongoose');
     mongoose.connect(config.db.url, function(err, response){
       if (err) {
         console.error('Error in connecting to the required mongodb instance: ' + err.message);
