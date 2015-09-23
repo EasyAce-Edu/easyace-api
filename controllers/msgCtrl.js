@@ -1,7 +1,7 @@
-var Message = require('../models/msgModel');
+var Message = require('../models/message');
 var respond = require('../lib/utils').respond;
 
-exports.create = function(req, res){
+exports.create = function(req, res) {
   var message = new Message({
     createdAt: new Date(),
     from: req.body.from,
@@ -12,11 +12,11 @@ exports.create = function(req, res){
       text: req.body.content.text
     }
   });
-  message.save(function(err){
+  message.save(function(err) {
     if (err) {
       console.error(err.stack);
       return respond(req, res, 500, {
-        msg: 'DB Internal Error occurs --> Unable to create the message as requested.'
+        msg: err.message
       });
     }
     return respond(req, res, 200, {
@@ -32,7 +32,7 @@ exports.get = function(req, res) {
     .find(query)
     .select('-__v')
     .lean()
-    .exec(function(err, messages){
+    .exec(function(err, messages) {
       if (err) {
         console.error(err.stack);
         return respond(req, res, 500, {

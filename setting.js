@@ -1,13 +1,13 @@
 var config = require('./config.js');
 
-module.exports = function(app){
+module.exports = function(app, passport) {
   var bodyParser = require('body-parser');
   var cors       = require('cors');
   var logger     = require('morgan');
+  var mongoose = require('mongoose');
 
-  if(config.db.client === 'mongodb') {
-    var mongoose   = require('mongoose');
-    mongoose.connect(config.db.url, function(err, response){
+  if (config.db.client === 'mongodb') {
+    mongoose.connect(config.db.url, function(err, response) {
       if (err) {
         console.error('Error in connecting to the required mongodb instance: ' + err.message);
       } else {
@@ -16,6 +16,7 @@ module.exports = function(app){
     });
   }
 
+  require('./lib/auth')(passport);
   app.set('port', config.http.port);
   app.use(logger('dev'));
   app.use(bodyParser.json());
@@ -24,7 +25,7 @@ module.exports = function(app){
   }));
 
   app.use(cors());
-
+  app.use(passport.initialize());
   app.enable('trust proxy');
   app.disable('x-powered-by');
   app.disable('etag');

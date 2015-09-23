@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var bcrypt   = require('bcrypt-nodejs');
 var Schema   = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -13,7 +14,7 @@ var userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['student', 'ta']
+    enum: ['student', 'ta', 'admin']
   },
   createdAt: Date,
   lastLogins: [
@@ -27,7 +28,18 @@ var userSchema = new Schema({
       os: String,
       id: String
     }
-  ]
+  ],
+  wechat: {
+    id: String
+  }
 });
+
+userSchema.methods.generateHash = function(password) {
+  return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+userSchema.methods.isValidPassword = function(password) {
+  return bcrypt.compareSync(password, this.passwordHash);
+};
 
 module.exports = mongoose.model('Users', userSchema);

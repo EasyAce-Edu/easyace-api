@@ -1,18 +1,26 @@
 # Structure
 - Environment: NodeJS v0.12.x
-- Framework: ExpressJS + Socket.IO?
-- DB: MongoDB v3.0.x
-- Linter: JSHint --> ESLint
+- Main Framework: ExpressJS
+- DB: MongoDB v3.x.x
+- Linter: JSHint/ESLint (*ESLint is preferred*)
 
 # Run Locally
 ```javascript
-  node app.js
+  node app.js or nodemon app.js
 ```
 
 # To-dos
-- [ ] JSON web token based login api using PassportJS ? or self-developed module?
-- [ ] question mongoose model
-- [ ] HTTP POST api to store a student's question
+- [ ] `GET /questions` --> Retrieve question
+- [ ] `POST /questions` --> Create a new question
+- [ ] `GET /users` --> Get user info
+- [ ] `POST /users` --> Add a new user
+- [ ] `POST /login` --> User login
 
-# Demo
-- Heroku: https://easyace-api.herokuapp.com
+# Server
+
+| Type | URL |
+|------|-----|
+|  Staging | https://easyace-api-staging.herokuapp.com |
+| Production | https://easyace-api.herokuapp.com |
+
+Please use the staging api server during current development period.
