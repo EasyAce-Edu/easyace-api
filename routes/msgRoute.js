@@ -1,6 +1,6 @@
 var MsgCtrl = require('../controllers/msgCtrl.js');
 
-module.exports = function(express, app){
+module.exports = function(express, app) {
   var router = express.Router();
 
   router.get('/', MsgCtrl.get);

@@ -7,7 +7,8 @@ var questionSchema = new Schema({
   subject: String,
   status: {
     type: String,
-    enum: ['open', 'close', 'reopen', 'final', 'cancelled']
+    enum: ['open', 'close', 'reopen', 'final', 'cancelled'],
+    default: 'open'
   },
   askedBy: String,
   answeredBy: [String],
