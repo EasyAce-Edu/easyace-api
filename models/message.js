@@ -3,13 +3,9 @@ var Schema   = mongoose.Schema;
 
 var msgSchema = new Schema({
   createdAt: Date,
-  from: String,
-  to: String,
-  content: {
-    audio: [String],
-    image: [String],
-    text: [String]
-  }
+  sentBy: String,
+  textMsg: String,
+  zipFileUri: String
 });
 
 module.exports = mongoose.model('Messages', msgSchema);

@@ -14,7 +14,7 @@ var userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['student', 'ta']
+    enum: ['student', 'ta', 'admin']
   },
   createdAt: Date,
   lastLogins: [
