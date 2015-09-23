@@ -9,6 +9,7 @@ exports.create = function(req, res) {
     updatedAt: currentTime,
     subject: req.body.subject,
     askedBy: req.body.askedBy,
+    hintType: req.body.hintType || 1,
     msgList: []
   });
 

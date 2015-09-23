@@ -20,8 +20,7 @@ var questionSchema = new Schema({
    * 2 - Full Solution
    */
   hintType: {
-    type: Number,
-    default: 1
+    type: Number
   },
   msgList: [
     {

@@ -10,8 +10,8 @@
 ```
 
 # To-dos
-- [ ] `GET /thread` --> Retrieve thread info
-- [ ] `POST /thread` --> Create a new question thread
+- [ ] `GET /questions` --> Retrieve question
+- [ ] `POST /questions` --> Create a new question
 - [ ] `GET /users` --> Get user info
 - [ ] `POST /users` --> Add a new user
 - [ ] `POST /login` --> User login
