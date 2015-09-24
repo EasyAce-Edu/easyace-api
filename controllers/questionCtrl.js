@@ -16,8 +16,8 @@ exports.create = function(req, res) {
   question.msgList.push({
     time: currentTime,
     sentBy: req.body.askedBy,
-    textMsg: req.body.MessageDTO.textMsg,
-    zipFileUri: req.body.MessageDTO.zipFileUri
+    textMsg: req.body.messageDTO.textMsg,
+    zipFileUri: req.body.messageDTO.zipFileUri
   });
 
   question.save(function(err) {

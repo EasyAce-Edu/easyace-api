@@ -9,9 +9,9 @@ Parameter (JSON format)
 | subject  | String  | Main subject of the question  |
 | askedBy | String | Student's id |
 | hintType (Optional)| Number | 1 (Hint Only) or 2 (Full solution), default value is 1 |
-| MessageDTO | Object | Body of the question |
-| MessageDTO.textMsg | String | Text Section of the question (<= 140 characters) |
-| MessageDTO.zipFileUri | String | S3 Uri of the zip file that contains all images & audio |
+| messageDTO | Object | Body of the question |
+| messageDTO.textMsg | String | Text Section of the question (<= 140 characters) |
+| messageDTO.zipFileUri | String | S3 Uri of the zip file that contains all images & audio |
 
 
 Response (JSON format)
