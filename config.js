@@ -7,8 +7,11 @@ module.exports = {
   http: {
     port: process.env.PORT || 8080,
     socket: {
-      maxNo : 50
+      maxNo: 50
     }
+  },
+  jwt: {
+    secret: process.env.JWT_SECRET || 'hello@easyace.ca'
   },
   dropbox: {
     appKey: process.env.DROPBOX_APP_KEY || '<your_dropbox_app_key>',

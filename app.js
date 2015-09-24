@@ -8,6 +8,9 @@ var app      = express();
 var http     = require('http');
 var respond  = require('./lib/utils').respond;
 
+var jwt      = require('jsonwebtoken');
+var config   = require('./config');
+
 // Load local Express JS configuration
 require('./setting')(app, passport);
 
@@ -29,9 +32,19 @@ app.get('/', function(req, res) {
   });
 });
 
-app.get('/login', passport.authenticate('local', {session: false}), function(req, res) {
+app.post('/login', passport.authenticate('local', {session: false}), function(req, res) {
+  var token = jwt.sign({
+    id: req.user._id,
+    username: req.user.username,
+    role: req.user.role
+  }, config.jwt.secret, {
+    issuer: 'api.easyace.ca'
+  });
+
   return respond(req, res, 200, {
-    user: req.user
+    token: token,
+    username: req.user.username,
+    role: req.user.role
   });
 });
 
