@@ -21,6 +21,5 @@
 | Type | URL |
 |------|-----|
 |  Staging | https://easyace-api-staging.herokuapp.com |
-| Production | https://easyace-api.herokuapp.com |
 
 Please use the staging api server during current development period.
