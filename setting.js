@@ -4,7 +4,7 @@ module.exports = function(app, passport) {
   var bodyParser = require('body-parser');
   var cors       = require('cors');
   var logger     = require('morgan');
-  var mongoose = require('mongoose');
+  var mongoose   = require('mongoose');
 
   if (config.db.client === 'mongodb') {
     mongoose.connect(config.db.url, function(err, response) {
@@ -16,7 +16,7 @@ module.exports = function(app, passport) {
     });
   }
 
-  require('./lib/auth')(passport);
+  require('./lib/auth')(passport, config);
   app.set('port', config.http.port);
   app.use(logger('dev'));
   app.use(bodyParser.json());
