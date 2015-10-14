@@ -6,7 +6,7 @@ module.exports = function(express, app) {
   router.get('/', MsgCtrl.get);
   router.post('/', MsgCtrl.create);
 
-  routet.post('/add', MsgCtrl.add);
+  router.post('/add', MsgCtrl.add);
 
   app.use('/messages', router);
 };
