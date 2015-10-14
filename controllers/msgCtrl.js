@@ -1,5 +1,53 @@
-var Message = require('../models/message');
+var Message  = require('../models/message');
+var Question = require('../models/question');
+
 var respond = require('../lib/utils').respond;
+
+exports.add = function(req, res) {
+  if (!req.query.id || !req.body) {
+    return respond(req, res, 400, {
+      msg: 'One of the required parameters is missing.'
+    });
+  }
+
+  Question
+    .findOne({
+      _id: req.query.id
+    })
+    .exec(function(err, question) {
+      if (err) {
+        console.error(err.stack);
+        return respond(req, res, 500, {
+          msg: err.message
+        });
+      }
+
+      if (!question) {
+        return respond(req, res, 400, {
+          msg: 'Unable to find any questions that match the required question id.'
+        });
+      }
+
+      question.msgList.push({
+        time: req.body.time ? req.body.time : new Date(),
+        sentBy: req.body.sentBy,
+        textMsg: req.body.textMsg,
+        zipFileUri: req.body.zipFileUri
+      });
+
+      question.save(function(err) {
+        if (err) {
+          console.error(err.stack);
+          return respond(req, res, 500, {
+            msg: err.message
+          });
+        }
+        return respond(req, res, 200, {
+          msg: 'Message has been successfully added to the required question thread.'
+        });
+      });
+    });
+};
 
 exports.create = function(req, res) {
   var message = new Message({
