@@ -3,6 +3,46 @@ var respond  = require('../lib/utils').respond;
 
 var _        = require('lodash');
 
+exports.set = function(req, res) {
+  if (!req.query.id || !req.query.status) {
+    return respond(req, res, 400, {
+      msg: 'One of the required parameters is missing.'
+    });
+  }
+
+  Question
+    .findOne({
+      _id: req.query.id
+    })
+    .exec(function(err, question) {
+      if (err) {
+        console.error(err.stack);
+        return respond(req, res, 500, {
+          msg: err.message
+        });
+      }
+
+      if (!question) {
+        return respond(req, res, 400, {
+          msg: 'Unable to find any questions that match question id.'
+        });
+      }
+
+      question.status = req.query.status;
+      question.save(function(err) {
+        if (err) {
+          console.error(err.stack);
+          return respond(req, res, 500, {
+            msg: err.message
+          });
+        }
+        return respond(req, res, 500, {
+          msg: 'The status of target question has been successfully changed to ' + req.query.status
+        });
+      });
+    });
+};
+
 exports.create = function(req, res) {
   var currentTime = new Date();
 

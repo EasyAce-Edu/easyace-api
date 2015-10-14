@@ -6,5 +6,7 @@ module.exports = function(express, app){
   router.post('/', QuestionCtrl.create);
   router.get('/', QuestionCtrl.get);
 
+  router.put('/status', QuestionCtrl.set);
+
   app.use('/questions', router);
 };

@@ -7,11 +7,11 @@ var questionSchema = new Schema({
   subject: String,
   status: {
     type: String,
-    enum: ['open', 'close', 'reopen', 'final', 'cancelled'],
+    enum: ['open', 'close', 'reopen', 'final', 'cancelled', 'assigned', 'transferred'],
     default: 'open'
   },
   askedBy: String,
-  answeredBy: [String],
+  answeredBy: String,
   tags: [String],
   /**
    * hintType Possible Values
