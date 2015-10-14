@@ -4,7 +4,7 @@ var respond  = require('../lib/utils').respond;
 var _        = require('lodash');
 
 exports.set = function(req, res) {
-  if (!req.query.id || !req.query.status || !req.query.taid) {
+  if (!req.query.id || !req.query.status || !req.query.answeredBy) {
     return respond(req, res, 400, {
       msg: 'One of the required parameters is missing.'
     });
@@ -29,7 +29,7 @@ exports.set = function(req, res) {
       }
 
       question.status = req.query.status;
-      question.answeredBy = req.query.taid;
+      question.answeredBy = req.query.answeredBy;
       question.save(function(err) {
         if (err) {
           console.error(err.stack);
